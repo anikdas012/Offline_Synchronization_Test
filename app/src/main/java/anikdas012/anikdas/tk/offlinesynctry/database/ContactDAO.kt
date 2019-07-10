@@ -17,6 +17,6 @@ interface ContactDAO {
     @Query("SELECT * from Contacts ORDER BY id ASC")
     fun getAll(): LiveData<List<Contact>>
 
-    @Query("SELECT * from Contacts WHERE status = 1 ORDER BY id ASC")
-    fun getAllUnsynced(): LiveData<List<Contact>>
+    @Query("SELECT * from Contacts WHERE status = :syncStatus ORDER BY id ASC")
+    fun getAllUnsynced(syncStatus: Int): LiveData<List<Contact>>
 }
