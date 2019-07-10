@@ -32,6 +32,7 @@
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:id="@+id/status_image"
+            android:src="@drawable/synced"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:layout_weight=".1"/>
