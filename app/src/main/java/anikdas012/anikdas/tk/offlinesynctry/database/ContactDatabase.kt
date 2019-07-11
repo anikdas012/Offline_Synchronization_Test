@@ -16,7 +16,7 @@ abstract class ContactDatabase: RoomDatabase() {
 
         fun getDatabase(context: Context): ContactDatabase {
             return databaseInstance ?: synchronized(this) {
-//                Creating databse object
+//                Creating database object
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     ContactDatabase::class.java,
