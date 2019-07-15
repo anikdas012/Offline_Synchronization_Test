@@ -7,10 +7,9 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import anikdas012.anikdas.tk.offlinesynctry.R
-import kotlinx.android.synthetic.main.list_items.view.*
 
 class ContactListAdapter internal constructor(context: Context): RecyclerView.Adapter<ContactListAdapter.ContactViewHolder>(){
-    
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
