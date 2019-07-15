@@ -34,6 +34,11 @@ class ContactListAdapter internal constructor(context: Context): RecyclerView.Ad
         }
     }
 
+    internal fun setContacts(contacts: List<Contact>) {
+        this.contacts = contacts
+        notifyDataSetChanged()
+    }
+
 
     inner class ContactViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val name: AppCompatTextView = itemView.findViewById(R.id.name_text)
