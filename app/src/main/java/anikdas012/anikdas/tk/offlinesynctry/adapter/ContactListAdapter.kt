@@ -9,6 +9,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import anikdas012.anikdas.tk.offlinesynctry.R
 import anikdas012.anikdas.tk.offlinesynctry.database.Contact
+import anikdas012.anikdas.tk.offlinesynctry.util.AppUtil
 
 class ContactListAdapter internal constructor(context: Context): RecyclerView.Adapter<ContactListAdapter.ContactViewHolder>(){
 
@@ -23,7 +24,14 @@ class ContactListAdapter internal constructor(context: Context): RecyclerView.Ad
     override fun getItemCount() = contacts.size
 
     override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val currentContact = contacts[position]
+        holder.name.text = currentContact.name
+        holder.number.text = currentContact.number
+        if (currentContact.status == AppUtil.STATUS_SYNCED) {
+            holder.status.setImageResource(R.drawable.synced)
+        } else {
+            holder.status.setImageResource(R.drawable.not_synced)
+        }
     }
 
 
