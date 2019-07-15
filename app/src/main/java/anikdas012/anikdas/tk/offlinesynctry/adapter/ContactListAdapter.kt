@@ -16,7 +16,8 @@ class ContactListAdapter internal constructor(context: Context): RecyclerView.Ad
     private var contacts = emptyList<Contact>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val itemView = inflater.inflate(R.layout.list_items, parent, false)
+        return ContactViewHolder(itemView)
     }
 
     override fun getItemCount() = contacts.size
