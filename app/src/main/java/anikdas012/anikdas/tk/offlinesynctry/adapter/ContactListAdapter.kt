@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import anikdas012.anikdas.tk.offlinesynctry.R
 import kotlinx.android.synthetic.main.list_items.view.*
 
-class ContactListAdapter internal constructor(context: Context): RecyclerView.Adapter<ContactListAdapter.ContactViewHolder>{
+class ContactListAdapter internal constructor(context: Context): RecyclerView.Adapter<ContactListAdapter.ContactViewHolder>(){
     inner class ContactViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val name: AppCompatTextView = itemView.findViewById(R.id.name_text)
         val number: AppCompatTextView = itemView.findViewById(R.id.number_text)
