@@ -13,4 +13,10 @@ class ContactRepository(private val contactDao: ContactDAO) {
     suspend fun createContact(contact: Contact) {
         contactDao.createNewContact(contact)
     }
+
+
+    @WorkerThread
+    suspend fun updateContact(contact: Contact, syncStatus: Int) {
+        contactDao.updateUnsynced(contact.number, syncStatus)
+    }
 }
