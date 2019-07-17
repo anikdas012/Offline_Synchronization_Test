@@ -44,8 +44,13 @@ abstract class ContactDatabase: RoomDatabase() {
             }
         }
 
-        fun populateDatabase(contactDAO: ContactDAO) {
+        suspend fun populateDatabase(contactDAO: ContactDAO) {
             contactDAO.deleteAll()
+
+            var contact = Contact( name="Anik", number = "01933510831", status = AppUtil.STATUS_UNSYNCED)
+            contactDAO.createNewContact(contact)
+            contact = Contact(name = "Ani", number = "01515687986", status = AppUtil.STATUS_UNSYNCED)
+            contactDAO.createNewContact(contact)
         }
     }
 }
