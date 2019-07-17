@@ -19,4 +19,9 @@ class ContactRepository(private val contactDao: ContactDAO) {
     suspend fun updateContact(contact: Contact, syncStatus: Int) {
         contactDao.updateUnsynced(contact.number, syncStatus)
     }
+
+
+    fun getUnSyncedContacts(): List<Contact> {
+        return contactDao.getAllUnsynced(AppUtil.STATUS_UNSYNCED)
+    }
 }
