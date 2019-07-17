@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import kotlinx.coroutines.CoroutineScope
 
 @Database(entities = arrayOf(Contact::class), version = 1)
 abstract class ContactDatabase: RoomDatabase() {
@@ -14,7 +15,7 @@ abstract class ContactDatabase: RoomDatabase() {
         @Volatile
         private var databaseInstance: ContactDatabase? = null
 
-        fun getDatabase(context: Context): ContactDatabase {
+        fun getDatabase(context: Context, scope: CoroutineScope): ContactDatabase {
             return databaseInstance ?: synchronized(this) {
 //                Creating database object
                 val instance = Room.databaseBuilder(
