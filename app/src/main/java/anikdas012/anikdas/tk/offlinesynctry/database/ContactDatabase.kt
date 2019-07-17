@@ -28,4 +28,8 @@ abstract class ContactDatabase: RoomDatabase() {
             }
         }
     }
+
+
+    private class ContactRoomDatabase(private val scope: CoroutineScope): RoomDatabase.Callback() {
+    }
 }
