@@ -18,7 +18,7 @@ interface ContactDAO {
     fun getAll(): LiveData<List<Contact>>
 
     @Query("SELECT * from Contacts WHERE status = :syncStatus")
-    fun getAllUnsynced(syncStatus: Int): LiveData<List<Contact>>
+    fun getAllUnsynced(syncStatus: Int): List<Contact>
 
     @Query("UPDATE Contacts SET status = :syncStatus WHERE Phone_Number = :phoneNumber")
     suspend fun updateUnsynced(phoneNumber: String, syncStatus: Int)
