@@ -14,9 +14,9 @@ interface ContactDAO {
     @Query("DELETE FROM Contacts")
     fun deleteAll()
 
-    @Query("SELECT * from Contacts ORDER BY id ASC")
+    @Query("SELECT * from Contacts")
     fun getAll(): LiveData<List<Contact>>
 
-    @Query("SELECT * from Contacts WHERE status = :syncStatus ORDER BY id ASC")
+    @Query("SELECT * from Contacts WHERE status = :syncStatus")
     fun getAllUnsynced(syncStatus: Int): LiveData<List<Contact>>
 }
