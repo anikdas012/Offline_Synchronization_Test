@@ -26,6 +26,7 @@ abstract class ContactDatabase: RoomDatabase() {
                     context.applicationContext,
                     ContactDatabase::class.java,
                     "Contact_database")
+                    .addCallback(ContactRoomDatabase(scope))
                     .build()
                 databaseInstance = instance
                 instance
