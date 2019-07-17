@@ -5,6 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
+import anikdas012.anikdas.tk.offlinesynctry.util.AppUtil
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -41,6 +42,10 @@ abstract class ContactDatabase: RoomDatabase() {
                     populateDatabase(database.contactDao())
                 }
             }
+        }
+
+        fun populateDatabase(contactDAO: ContactDAO) {
+            contactDAO.deleteAll()
         }
     }
 }
