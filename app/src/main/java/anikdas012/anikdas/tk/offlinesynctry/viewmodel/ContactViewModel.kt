@@ -15,7 +15,7 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
     val allContacts: LiveData<List<Contact>>
 
     init {
-        val contactDao = ContactDatabase.getDatabase(application).contactDao()
+        val contactDao = ContactDatabase.getDatabase(application, viewModelScope).contactDao()
         repository = ContactRepository(contactDao)
         allContacts = repository.allContacts
     }
