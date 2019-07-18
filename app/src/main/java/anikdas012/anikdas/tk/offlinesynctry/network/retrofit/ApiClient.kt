@@ -14,7 +14,7 @@ class ApiClient {
          * This method will return an instance of retrofit
          * in singleton pattern
          */
-        fun getInstance(): Retrofit {
+        private fun getInstance(): Retrofit {
             if (retrofit == null) {
                 retrofit = retrofit2.Retrofit.Builder()
                     .baseUrl(baseURL)
