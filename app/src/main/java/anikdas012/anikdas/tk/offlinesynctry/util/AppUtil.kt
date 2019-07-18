@@ -6,6 +6,10 @@ import android.net.NetworkInfo
 
 class AppUtil {
     companion object {
+        /**
+         * Final status code of synced and unsynced
+         * contacts
+         */
         final val STATUS_SYNCED: Int = 0
         final val STATUS_UNSYNCED: Int = 1
 
