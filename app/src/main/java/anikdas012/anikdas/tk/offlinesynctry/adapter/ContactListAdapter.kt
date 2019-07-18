@@ -21,6 +21,9 @@ class ContactListAdapter internal constructor(context: Context): RecyclerView.Ad
         return ContactViewHolder(itemView)
     }
 
+    /**
+     * This method will return size of contact list
+     */
     override fun getItemCount() = contacts.size
 
     override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
@@ -34,12 +37,19 @@ class ContactListAdapter internal constructor(context: Context): RecyclerView.Ad
         }
     }
 
+    /**
+     * This method will update contact list
+     * and notify changes to adapter
+     */
     internal fun setContacts(contacts: List<Contact>) {
         this.contacts = contacts
         notifyDataSetChanged()
     }
 
 
+    /**
+     * View holder class of recycler view
+     */
     inner class ContactViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val name: AppCompatTextView = itemView.findViewById(R.id.name_text)
         val number: AppCompatTextView = itemView.findViewById(R.id.number_text)
