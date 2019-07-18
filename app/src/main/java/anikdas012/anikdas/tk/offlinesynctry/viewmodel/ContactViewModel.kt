@@ -45,8 +45,12 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
     }
 
 
+    /**
+     * This method will sync contact between
+     * local database and server
+     */
     fun syncContact(name: String, number: String) {
         val contact = ContactModel(name, number, null)
-        
+
     }
 }
