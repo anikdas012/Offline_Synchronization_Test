@@ -36,4 +36,9 @@ class ContactRepository(private val contactDao: ContactDAO) {
     fun getUnSyncedContacts(): List<Contact> {
         return contactDao.getAllUnsynced(AppUtil.STATUS_UNSYNCED)
     }
+
+
+    fun getContactFromDatabase(number: String): Contact? {
+        return contactDao.getContact(number)
+    }
 }
