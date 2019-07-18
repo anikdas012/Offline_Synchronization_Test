@@ -24,8 +24,8 @@ class ContactRepository(private val contactDao: ContactDAO) {
      * database using a new thread
      */
     @WorkerThread
-    suspend fun updateContact(contact: Contact, syncStatus: Int) {
-        contactDao.updateUnsynced(contact.number, syncStatus)
+    suspend fun updateContact(number: String, syncStatus: Int) {
+        contactDao.updateUnsynced(number, syncStatus)
     }
 
 
