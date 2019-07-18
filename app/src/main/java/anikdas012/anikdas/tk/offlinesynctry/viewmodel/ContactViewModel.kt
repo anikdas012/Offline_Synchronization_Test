@@ -16,17 +16,28 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
     private val repository: ContactRepository
     val allContacts: LiveData<List<Contact>>
 
+    /**
+     * Initializing the class with some class properties
+     */
     init {
         val contactDao = ContactDatabase.getDatabase(application, viewModelScope).contactDao()
         repository = ContactRepository(contactDao)
         allContacts = repository.allContacts
     }
 
+    /**
+     * This method will add a new contact in database
+     * using a new thread
+     */
     fun createContact(contact: Contact) = viewModelScope.launch(Dispatchers.IO) {
         repository.createContact(contact)
     }
 
 
+    /**
+     * This method will add a new contact in both server and
+     * database depending on network availability
+     */
     fun addContact(name: String, number: String) {
         if (AppUtil.isNetworkConnected(getApplication())) {
             val contact = ContactModel(name, number, null)
