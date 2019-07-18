@@ -40,4 +40,7 @@ interface ContactDAO {
      */
     @Query("UPDATE Contacts SET status = :syncStatus WHERE Phone_Number = :phoneNumber")
     suspend fun updateUnsynced(phoneNumber: String, syncStatus: Int)
+
+    @Query("SELECT * from Contacts WHERE Phone_Number = :phoneNumber")
+    fun getContact(phoneNumber: String): Contact?
 }
