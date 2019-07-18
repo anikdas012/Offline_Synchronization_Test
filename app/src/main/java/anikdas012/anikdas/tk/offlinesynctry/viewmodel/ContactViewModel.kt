@@ -45,6 +45,8 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
     fun addContact(name: String, number: String) {
         if (AppUtil.isNetworkConnected(getApplication())) {
             syncContact(name, number)
+        } else {
+            createContact(Contact(name, number, AppUtil.STATUS_UNSYNCED))
         }
     }
 
