@@ -10,8 +10,8 @@ class AppUtil {
          * Final status code of synced and unsynced
          * contacts
          */
-        final val STATUS_SYNCED: Int = 0
-        final val STATUS_UNSYNCED: Int = 1
+        const val STATUS_SYNCED: Int = 0
+        const val STATUS_UNSYNCED: Int = 1
 
         /**
          * This method will return current
