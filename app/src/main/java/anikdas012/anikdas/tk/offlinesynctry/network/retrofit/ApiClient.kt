@@ -25,6 +25,10 @@ class ApiClient {
         }
 
 
+        /**
+         * This method will return Api end points
+         * to connect with server
+         */
         fun getApi(): ApiEndPoints {
             return getInstance().create(ApiEndPoints::class.java)
         }
