@@ -10,6 +10,10 @@ class ApiClient {
         private var retrofit: Retrofit? = null
         private  val baseURL = "anikdas.tk/api"
 
+        /**
+         * This method will return an instance of retrofit
+         * in singleton pattern
+         */
         fun getInstance(): Retrofit {
             if (retrofit == null) {
                 retrofit = retrofit2.Retrofit.Builder()
