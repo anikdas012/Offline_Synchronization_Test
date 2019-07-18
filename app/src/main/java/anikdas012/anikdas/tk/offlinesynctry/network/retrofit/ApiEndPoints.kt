@@ -9,9 +9,17 @@ import retrofit2.http.POST
 
 interface ApiEndPoints {
 
+    /**
+     * This method will return a list of contacts
+     * from server
+     */
     @GET("/offlineSync")
     fun getContacts(): Call<List<ContactModel>>
 
+    /**
+     * This method will add a new contact
+     * to server
+     */
     @Headers("Content-Type: application/json")
     @POST("/offlineSync")
     fun addContact(@Body contact: ContactModel): Call<ContactModel>
