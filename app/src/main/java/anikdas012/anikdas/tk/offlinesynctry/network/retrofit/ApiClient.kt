@@ -1,5 +1,6 @@
 package anikdas012.anikdas.tk.offlinesynctry.network.retrofit
 
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -19,6 +20,7 @@ class ApiClient {
                 retrofit = retrofit2.Retrofit.Builder()
                     .baseUrl(baseURL)
                     .addConverterFactory(GsonConverterFactory.create())
+                    .client(OkHttpClient().newBuilder().build())
                     .build()
             }
             return retrofit!!
