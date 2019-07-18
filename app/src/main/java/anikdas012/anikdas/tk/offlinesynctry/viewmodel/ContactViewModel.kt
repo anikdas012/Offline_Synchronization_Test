@@ -66,6 +66,10 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
     fun getLocalContact(number: String) = repository.getContactFromDatabase(number)
 
 
+    /**
+     * This method will sync all unsync contacts
+     * and update their status
+     */
     fun syncUnsyncContacts() {
         val unSyncContacts = repository.getUnSyncedContacts()
         for (contact in unSyncContacts) {
