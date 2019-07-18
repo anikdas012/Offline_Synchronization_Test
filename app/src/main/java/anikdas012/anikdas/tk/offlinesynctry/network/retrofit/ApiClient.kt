@@ -23,5 +23,10 @@ class ApiClient {
             }
             return retrofit!!
         }
+
+
+        fun getApi(): ApiEndPoints {
+            return getInstance().create(ApiEndPoints::class.java)
+        }
     }
 }
