@@ -38,6 +38,10 @@ class ContactRepository(private val contactDao: ContactDAO) {
     }
 
 
+    /**
+     * This method will return a specific contact from
+     * database if exists
+     */
     fun getContactFromDatabase(number: String): Contact? {
         return contactDao.getContact(number)
     }
