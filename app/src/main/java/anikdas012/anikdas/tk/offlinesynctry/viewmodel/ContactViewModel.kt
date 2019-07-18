@@ -40,7 +40,13 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
      */
     fun addContact(name: String, number: String) {
         if (AppUtil.isNetworkConnected(getApplication())) {
-            val contact = ContactModel(name, number, null)
+            syncContact(name, number)
         }
+    }
+
+
+    fun syncContact(name: String, number: String) {
+        val contact = ContactModel(name, number, null)
+        
     }
 }
