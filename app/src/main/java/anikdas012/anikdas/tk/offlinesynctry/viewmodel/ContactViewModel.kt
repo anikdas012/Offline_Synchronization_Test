@@ -49,6 +49,9 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
     }
 
 
+    /**
+     * This method will update a specific contact in database
+     */
     fun updateContact(number: String, syncStatus: Int) = viewModelScope.launch(Dispatchers.IO) {
         repository.updateContact(number, syncStatus)
     }
