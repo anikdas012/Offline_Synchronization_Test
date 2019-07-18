@@ -57,6 +57,10 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
     }
 
 
+    /**
+     * This method will return a specific contact from
+     * database if exists
+     */
     fun getLocalContact(number: String) = repository.getContactFromDatabase(number)
 
 
