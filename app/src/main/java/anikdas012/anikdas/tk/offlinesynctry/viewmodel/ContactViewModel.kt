@@ -70,5 +70,21 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
      */
     fun syncContact(name: String, number: String) {
         val contact = ContactModel(name, number, null)
+        val addContact = ApiClient.getApi().addContact(contact)
+        addContact.enqueue(object : Callback<ContactModel> {
+            override fun onResponse(call: Call<ContactModel>, response: Response<ContactModel>) {
+                if (response.isSuccessful and (response.body()?.id != null)) {
+                    if (getLocalContact(number) != null) {
+                        updateContact(number, AppUtil.STATUS_SYNCED)
+                    } else {
+                        createContact(Contact(name, number, AppUtil.STATUS_UNSYNCED))
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<ContactModel>, t: Throwable) {
+                createContact(Contact(name, number, AppUtil.STATUS_UNSYNCED))
+            }
+        })
     }
 }
