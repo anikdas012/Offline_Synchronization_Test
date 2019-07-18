@@ -57,6 +57,9 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
     }
 
 
+    fun getLocalContact(number: String) = repository.getContactFromDatabase(number)
+
+
     /**
      * This method will sync contact between
      * local database and server
