@@ -26,6 +26,10 @@ android {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
     }
+
+    packagingOptions {
+        pickFirst("META-INF/atomicfu.kotlin_module")
+    }
 }
 
 dependencies {
@@ -54,6 +58,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-runtime:2.0.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0-alpha02"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.0"
 
 //    Retrofit & OkHttp
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
