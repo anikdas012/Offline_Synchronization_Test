@@ -1,11 +1,14 @@
 package anikdas012.anikdas.tk.offlinesynctry.util
 
+import android.util.Log
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import anikdas012.anikdas.tk.offlinesynctry.database.Contact
 import anikdas012.anikdas.tk.offlinesynctry.database.ContactDAO
 
 class ContactRepository(private val contactDao: ContactDAO) {
+
+    private val LOG_TAG = "Contact_Repository"
 
     val allContacts: LiveData<List<Contact>> = contactDao.getAll()
 
@@ -16,6 +19,7 @@ class ContactRepository(private val contactDao: ContactDAO) {
     @WorkerThread
     suspend fun createContact(contact: Contact) {
         contactDao.createNewContact(contact)
+        Log.d(LOG_TAG, "createContact")
     }
 
 
@@ -26,6 +30,7 @@ class ContactRepository(private val contactDao: ContactDAO) {
     @WorkerThread
     suspend fun updateContact(number: String, syncStatus: Int) {
         contactDao.updateUnsynced(number, syncStatus)
+        Log.d(LOG_TAG, "updateContact")
     }
 
 
@@ -34,6 +39,7 @@ class ContactRepository(private val contactDao: ContactDAO) {
      * from database
      */
     fun getUnSyncedContacts(): List<Contact> {
+        Log.d(LOG_TAG, "getUnSyncedContacts")
         return contactDao.getAllUnsynced(AppUtil.STATUS_UNSYNCED)
     }
 
@@ -43,6 +49,7 @@ class ContactRepository(private val contactDao: ContactDAO) {
      * database if exists
      */
     fun getContactFromDatabase(number: String): Contact? {
+        Log.d(LOG_TAG, "getContactFromDatabase")
         return contactDao.getContact(number)
     }
 }
