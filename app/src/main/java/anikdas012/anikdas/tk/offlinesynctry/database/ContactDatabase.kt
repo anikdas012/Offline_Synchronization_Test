@@ -23,7 +23,7 @@ abstract class ContactDatabase: RoomDatabase() {
          * This method will return an instance of
          * database in a singleton pattern
          */
-        fun getDatabase(context: Context, scope: CoroutineScope): ContactDatabase {
+        fun getDatabase(context: Context): ContactDatabase {
             return databaseInstance ?: synchronized(this) {
 //                Creating database object
                 val instance = Room.databaseBuilder(
