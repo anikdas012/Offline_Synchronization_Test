@@ -14,7 +14,7 @@ import anikdas012.anikdas.tk.offlinesynctry.viewmodel.ContactViewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private val LOG_TAG = "Main_Activity"
+    private val LOG_TAG = "OFFLINE_Main_Activity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

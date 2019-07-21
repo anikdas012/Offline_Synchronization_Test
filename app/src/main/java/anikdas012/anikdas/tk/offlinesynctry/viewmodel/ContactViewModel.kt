@@ -19,7 +19,7 @@ import retrofit2.Response
 
 class ContactViewModel(application: Application): AndroidViewModel(application) {
 
-    private val LOG_TAG = "Contact_ViewModel"
+    private val LOG_TAG = "OFFLINE_Contact_ViewModel"
 
     private val repository: ContactRepository
     val allContacts: LiveData<List<Contact>>

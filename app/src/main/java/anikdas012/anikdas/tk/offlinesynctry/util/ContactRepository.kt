@@ -8,7 +8,7 @@ import anikdas012.anikdas.tk.offlinesynctry.database.ContactDAO
 
 class ContactRepository(private val contactDao: ContactDAO) {
 
-    private val LOG_TAG = "Contact_Repository"
+    private val LOG_TAG = "OFFLINE_Contact_Repository"
 
     val allContacts: LiveData<List<Contact>> = contactDao.getAll()
 
