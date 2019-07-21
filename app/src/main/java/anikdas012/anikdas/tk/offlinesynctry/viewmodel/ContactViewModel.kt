@@ -24,7 +24,7 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
      * Initializing the class with some class properties
      */
     init {
-        val contactDao = ContactDatabase.getDatabase(application, viewModelScope).contactDao()
+        val contactDao = ContactDatabase.getDatabase(application).contactDao()
         repository = ContactRepository(contactDao)
         allContacts = repository.allContacts
     }
