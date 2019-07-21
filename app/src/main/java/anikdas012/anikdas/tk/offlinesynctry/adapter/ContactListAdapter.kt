@@ -1,6 +1,7 @@
 package anikdas012.anikdas.tk.offlinesynctry.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,10 +14,13 @@ import anikdas012.anikdas.tk.offlinesynctry.util.AppUtil
 
 class ContactListAdapter internal constructor(context: Context): RecyclerView.Adapter<ContactListAdapter.ContactViewHolder>(){
 
+    private val LOG_TAG = "OFFLINE_Contact_Adapter"
+
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var contacts = emptyList<Contact>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
+        Log.d(LOG_TAG, "onCreateViewHolder")
         val itemView = inflater.inflate(R.layout.list_items, parent, false)
         return ContactViewHolder(itemView)
     }
@@ -27,6 +31,7 @@ class ContactListAdapter internal constructor(context: Context): RecyclerView.Ad
     override fun getItemCount() = contacts.size
 
     override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
+        Log.d(LOG_TAG, "onBindViewHolder")
         val currentContact = contacts[position]
         holder.name.text = currentContact.name
         holder.number.text = currentContact.number
@@ -42,6 +47,7 @@ class ContactListAdapter internal constructor(context: Context): RecyclerView.Ad
      * and notify changes to adapter
      */
     internal fun setContacts(contacts: List<Contact>) {
+        Log.d(LOG_TAG, "setContacts")
         this.contacts = contacts
         notifyDataSetChanged()
     }
