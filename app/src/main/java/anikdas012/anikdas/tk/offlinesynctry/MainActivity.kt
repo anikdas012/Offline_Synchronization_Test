@@ -26,5 +26,9 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         val viewModel = ViewModelProviders.of(this).get(ContactViewModel::class.java)
+
+        submit.setOnClickListener {
+            viewModel.addContact(name.text.toString(), number.text.toString())
+        }
     }
 }
