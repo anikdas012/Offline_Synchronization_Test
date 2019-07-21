@@ -2,6 +2,7 @@ package anikdas012.anikdas.tk.offlinesynctry
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.lifecycle.Observer
@@ -13,9 +14,12 @@ import anikdas012.anikdas.tk.offlinesynctry.viewmodel.ContactViewModel
 
 class MainActivity : AppCompatActivity() {
 
+    private val LOG_TAG = "Main_Activity"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        Log.d(LOG_TAG, "onCreate")
 
 //        Initializing view components
         val name: AppCompatEditText = findViewById(R.id.name)
@@ -30,11 +34,13 @@ class MainActivity : AppCompatActivity() {
 
 //        Observing changes in contact list received from database
         viewModel.allContacts.observe(this, Observer {contacts ->
+            Log.d(LOG_TAG, "allContacts observer")
 //            Setting recycler view adapter to contacts received from database
             contacts?.let { adapter.setContacts(contacts) }
         })
 
         submit.setOnClickListener {
+            Log.d(LOG_TAG, "submit onClickListener")
             viewModel.addContact(name.text.toString(), number.text.toString())
         }
     }
