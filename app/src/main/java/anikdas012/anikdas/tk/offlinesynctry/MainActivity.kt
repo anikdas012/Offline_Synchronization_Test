@@ -11,6 +11,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+//        Initializing view components
         val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
         val adapter = ContactListAdapter(this)
         recyclerView.adapter = adapter
