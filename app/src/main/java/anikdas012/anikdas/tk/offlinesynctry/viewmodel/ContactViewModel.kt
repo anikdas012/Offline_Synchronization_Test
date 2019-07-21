@@ -104,6 +104,8 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
                     } else {
                         createContact(Contact(name, number, AppUtil.STATUS_UNSYNCED))
                     }
+                } else {
+                    createContact(Contact(name, number, AppUtil.STATUS_UNSYNCED))
                 }
             }
 
