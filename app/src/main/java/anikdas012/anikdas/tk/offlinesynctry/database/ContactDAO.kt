@@ -12,7 +12,7 @@ interface ContactDAO {
      * This method will add new contact to local database.
      * If conflict happens it will abort operation
      */
-    @Insert(onConflict = OnConflictStrategy.ABORT)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun createNewContact(contact: Contact)
 
     /**
