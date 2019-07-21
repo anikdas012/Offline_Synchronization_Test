@@ -18,8 +18,8 @@ class ContactRepository(private val contactDao: ContactDAO) {
      */
     @WorkerThread
     suspend fun createContact(contact: Contact) {
-        contactDao.createNewContact(contact)
         Log.d(LOG_TAG, "createContact")
+        contactDao.createNewContact(contact)
     }
 
 
@@ -29,8 +29,8 @@ class ContactRepository(private val contactDao: ContactDAO) {
      */
     @WorkerThread
     suspend fun updateContact(number: String, syncStatus: Int) {
-        contactDao.updateUnsynced(number, syncStatus)
         Log.d(LOG_TAG, "updateContact")
+        contactDao.updateUnsynced(number, syncStatus)
     }
 
 
