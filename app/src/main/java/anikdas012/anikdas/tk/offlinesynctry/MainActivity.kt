@@ -42,6 +42,9 @@ class MainActivity : AppCompatActivity() {
         submit.setOnClickListener {
             Log.d(LOG_TAG, "submit onClickListener")
             viewModel.addContact(name.text.toString(), number.text.toString())
+//            Clearing edit texts
+            name.setText("")
+            number.setText("")
         }
     }
 }
