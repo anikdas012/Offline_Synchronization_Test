@@ -1,6 +1,7 @@
 package anikdas012.anikdas.tk.offlinesynctry.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
@@ -17,6 +18,9 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class ContactViewModel(application: Application): AndroidViewModel(application) {
+
+    private val LOG_TAG = "Contact_ViewModel"
+
     private val repository: ContactRepository
     val allContacts: LiveData<List<Contact>>
 
@@ -24,6 +28,7 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
      * Initializing the class with some class properties
      */
     init {
+        Log.d(LOG_TAG, "init")
         val contactDao = ContactDatabase.getDatabase(application).contactDao()
         repository = ContactRepository(contactDao)
         allContacts = repository.allContacts
@@ -34,6 +39,7 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
      * using a new thread
      */
     fun createContact(contact: Contact) = viewModelScope.launch(Dispatchers.IO) {
+        Log.d(LOG_TAG, "createContact")
         repository.createContact(contact)
     }
 
@@ -43,6 +49,7 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
      * database depending on network availability
      */
     fun addContact(name: String, number: String) {
+        Log.d(LOG_TAG, "addContact")
         if (AppUtil.isNetworkConnected(getApplication())) {
             syncContact(name, number)
         } else {
@@ -55,6 +62,7 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
      * This method will update a specific contact in database
      */
     fun updateContact(number: String, syncStatus: Int) = viewModelScope.launch(Dispatchers.IO) {
+        Log.d(LOG_TAG, "updateContact")
         repository.updateContact(number, syncStatus)
     }
 
@@ -71,6 +79,7 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
      * and update their status
      */
     fun syncUnsyncContacts() {
+        Log.d(LOG_TAG, "syncUnsyncContacts")
         val unSyncContacts = repository.getUnSyncedContacts()
         for (contact in unSyncContacts) {
             syncContact(contact.name, contact.number)
@@ -83,10 +92,12 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
      * local database and server
      */
     fun syncContact(name: String, number: String) {
+        Log.d(LOG_TAG, "syncContact")
         val contact = ContactModel(name, number, null)
         val addContact = ApiClient.getApi().addContact(contact)
         addContact.enqueue(object : Callback<ContactModel> {
             override fun onResponse(call: Call<ContactModel>, response: Response<ContactModel>) {
+                Log.d(LOG_TAG, "syncContact_onResponse")
                 if (response.isSuccessful and (response.body()?.id != null)) {
                     if (getLocalContact(number) != null) {
                         updateContact(number, AppUtil.STATUS_SYNCED)
@@ -97,6 +108,7 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
             }
 
             override fun onFailure(call: Call<ContactModel>, t: Throwable) {
+                Log.d(LOG_TAG, "syncContact_onFailure")
                 createContact(Contact(name, number, AppUtil.STATUS_UNSYNCED))
             }
         })
