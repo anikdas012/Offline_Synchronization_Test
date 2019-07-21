@@ -1,6 +1,7 @@
 package anikdas012.anikdas.tk.offlinesynctry.database
 
 import android.content.Context
+import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -16,6 +17,9 @@ abstract class ContactDatabase: RoomDatabase() {
     abstract fun contactDao(): ContactDAO
 
     companion object {
+
+        private val LOG_TAG = "OFFLINE_ContactDatabase"
+
         @Volatile
         private var databaseInstance: ContactDatabase? = null
 
@@ -24,6 +28,7 @@ abstract class ContactDatabase: RoomDatabase() {
          * database in a singleton pattern
          */
         fun getDatabase(context: Context): ContactDatabase {
+            Log.d(LOG_TAG, "getDatabase")
             return databaseInstance ?: synchronized(this) {
 //                Creating database object
                 val instance = Room.databaseBuilder(
