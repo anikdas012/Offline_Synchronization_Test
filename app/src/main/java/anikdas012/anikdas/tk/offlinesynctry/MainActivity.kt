@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import anikdas012.anikdas.tk.offlinesynctry.adapter.ContactListAdapter
+import anikdas012.anikdas.tk.offlinesynctry.viewmodel.ContactViewModel
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,5 +24,7 @@ class MainActivity : AppCompatActivity() {
         val adapter = ContactListAdapter(this)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
+
+        val viewModel = ViewModelProviders.of(this).get(ContactViewModel::class.java)
     }
 }
