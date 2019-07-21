@@ -9,7 +9,7 @@ class ApiClient {
     companion object {
         @Volatile
         private var retrofit: Retrofit? = null
-        private  val baseURL = "anikdas.tk/api"
+        private  val baseURL = "https://anikdas.tk/api"
 
         /**
          * This method will return an instance of retrofit
