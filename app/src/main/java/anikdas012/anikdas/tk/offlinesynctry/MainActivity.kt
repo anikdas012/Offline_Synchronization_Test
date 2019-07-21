@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -26,6 +27,12 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         val viewModel = ViewModelProviders.of(this).get(ContactViewModel::class.java)
+
+//        Observing changes in contact list received from database
+        viewModel.allContacts.observe(this, Observer {contacts ->
+//            Setting recycler view adapter to contacts received from database
+            contacts?.let { adapter.setContacts(contacts) }
+        })
 
         submit.setOnClickListener {
             viewModel.addContact(name.text.toString(), number.text.toString())
