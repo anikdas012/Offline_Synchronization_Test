@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import androidx.work.WorkManager
 import anikdas012.anikdas.tk.offlinesynctry.database.Contact
 import anikdas012.anikdas.tk.offlinesynctry.database.ContactDatabase
 import anikdas012.anikdas.tk.offlinesynctry.model.ContactModel
@@ -23,6 +24,7 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
 
     private val repository: ContactRepository
     val allContacts: LiveData<List<Contact>>
+    private lateinit var workManager: WorkManager
 
     /**
      * Initializing the class with some class properties
@@ -32,6 +34,7 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
         val contactDao = ContactDatabase.getDatabase(application).contactDao()
         repository = ContactRepository(contactDao)
         allContacts = repository.allContacts
+        workManager = WorkManager.getInstance(application)
     }
 
     /**
