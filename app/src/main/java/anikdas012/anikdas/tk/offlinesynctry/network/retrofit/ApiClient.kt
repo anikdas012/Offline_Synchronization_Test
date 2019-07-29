@@ -14,7 +14,7 @@ class ApiClient {
 
         @Volatile
         private var retrofit: Retrofit? = null
-        private  val baseURL = "https://anikdas.tk/api/"
+        private  val baseURL = "https://anikdas.tk/"
 
         /**
          * This method will return an instance of retrofit
