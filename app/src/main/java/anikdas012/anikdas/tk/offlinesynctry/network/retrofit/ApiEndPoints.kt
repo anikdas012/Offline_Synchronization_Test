@@ -13,6 +13,7 @@ interface ApiEndPoints {
      * This method will return a list of contacts
      * from server
      */
+    @Headers("Content-Type: application/json")
     @GET("/api/offlineSync")
     fun getContacts(): Call<List<ContactModel>>
 
