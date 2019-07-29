@@ -101,6 +101,7 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
         addContact.enqueue(object : Callback<ContactModel> {
             override fun onResponse(call: Call<ContactModel>, response: Response<ContactModel>) {
                 Log.d(LOG_TAG, "syncContact_onResponse")
+                println("***///*** ${response.isSuccessful}  ;  ${response.body()}")
                 if (response.isSuccessful and (response.body()?.id != null)) {
                     if (getLocalContact(number) != null) {
                         updateContact(number, AppUtil.STATUS_SYNCED)
@@ -113,7 +114,7 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
             }
 
             override fun onFailure(call: Call<ContactModel>, t: Throwable) {
-                Log.d(LOG_TAG, "syncContact_onFailure")
+                Log.d(LOG_TAG, "syncContact_onFailure ${t.message}")
                 createContact(Contact(name, number, AppUtil.STATUS_UNSYNCED))
             }
         })
