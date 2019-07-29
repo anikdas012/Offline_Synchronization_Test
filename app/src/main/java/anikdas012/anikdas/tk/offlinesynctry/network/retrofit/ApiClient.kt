@@ -2,6 +2,7 @@ package anikdas012.anikdas.tk.offlinesynctry.network.retrofit
 
 import android.util.Log
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -25,7 +26,11 @@ class ApiClient {
                 retrofit = retrofit2.Retrofit.Builder()
                     .baseUrl(baseURL)
                     .addConverterFactory(GsonConverterFactory.create())
-                    .client(OkHttpClient().newBuilder().build())
+                    .client(OkHttpClient()
+                        .newBuilder()
+                        .addInterceptor(HttpLoggingInterceptor()
+                            .setLevel(HttpLoggingInterceptor.Level.BODY)
+                        ).build())
                     .build()
             }
             return retrofit!!
