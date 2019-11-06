@@ -106,7 +106,7 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
                     if (getLocalContact(number) != null) {
                         updateContact(number, AppUtil.STATUS_SYNCED)
                     } else {
-                        createContact(Contact(name, number, AppUtil.STATUS_UNSYNCED))
+                        createContact(Contact(name, number, AppUtil.STATUS_SYNCED))
                     }
                 } else {
                     createContact(Contact(name, number, AppUtil.STATUS_UNSYNCED))
