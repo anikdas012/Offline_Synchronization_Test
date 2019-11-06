@@ -40,6 +40,8 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
     /**
      * This method will add a new contact in database
      * using a new thread
+     *
+     * @param contact: {@link: anikdas012.anikdas.tk.offlinesynctry.database.Contact} object
      */
     fun createContact(contact: Contact) = viewModelScope.launch(Dispatchers.IO) {
         Log.d(LOG_TAG, "createContact")
@@ -50,6 +52,9 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
     /**
      * This method will add a new contact in both server and
      * database depending on network availability
+     *
+     * @param name: Name of the contact
+     * @param number: Phone number of the contact
      */
     fun addContact(name: String, number: String) {
         Log.d(LOG_TAG, "addContact")
@@ -63,6 +68,9 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
 
     /**
      * This method will update a specific contact in database
+     *
+     * @param number: Phone number of the contact
+     * @param syncStatus: Synchronization status
      */
     fun updateContact(number: String, syncStatus: Int) = viewModelScope.launch(Dispatchers.IO) {
         Log.d(LOG_TAG, "updateContact")
@@ -73,6 +81,8 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
     /**
      * This method will return a specific contact from
      * database if exists
+     *
+     * @param number: Phone number of the contact
      */
     fun getLocalContact(number: String) = repository.getContactFromDatabase(number)
 
@@ -93,6 +103,9 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
     /**
      * This method will sync contact between
      * local database and server
+     *
+     * @param name: Name of the contact
+     * @param number: Number of the contact
      */
     fun syncContact(name: String, number: String) {
         Log.d(LOG_TAG, "syncContact")
