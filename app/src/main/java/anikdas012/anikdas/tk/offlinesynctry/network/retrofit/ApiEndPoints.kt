@@ -14,7 +14,7 @@ interface ApiEndPoints {
      * from server
      */
     @Headers("Content-Type: application/json")
-    @GET("/api/offlineSync")
+    @GET("/api/offlineSync/")
     fun getContacts(): Call<List<ContactModel>>
 
     /**
@@ -22,6 +22,6 @@ interface ApiEndPoints {
      * to server
      */
     @Headers("Content-Type: application/json")
-    @POST("/api/offlineSync")
+    @POST("/api/offlineSync/")
     fun addContact(@Body contact: ContactModel): Call<ContactModel>
 }
