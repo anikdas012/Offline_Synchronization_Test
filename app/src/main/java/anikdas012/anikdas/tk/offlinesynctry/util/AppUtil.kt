@@ -20,6 +20,9 @@ class AppUtil {
         /**
          * This method will return current
          * network condition
+         *
+         * @param context: Application context
+         * @return True if internet is connected else False
          */
         fun isNetworkConnected(context: Context): Boolean {
             Log.d(LOG_TAG, "isNetworkConnected")
