@@ -26,6 +26,9 @@ abstract class ContactDatabase: RoomDatabase() {
         /**
          * This method will return an instance of
          * database in a singleton pattern
+         *
+         * @param context: Application context
+         * @return Database object
          */
         fun getDatabase(context: Context): ContactDatabase {
             Log.d(LOG_TAG, "getDatabase")
@@ -48,6 +51,8 @@ abstract class ContactDatabase: RoomDatabase() {
      * This class will add call back functionality to database.
      * It will delete previous entries and add new entries in
      * database when called
+     *
+     * @param scope: coroutine scope
      */
     private class ContactRoomDatabase(private val scope: CoroutineScope): RoomDatabase.Callback() {
         override fun onOpen(db: SupportSQLiteDatabase) {
@@ -62,6 +67,8 @@ abstract class ContactDatabase: RoomDatabase() {
         /**
          * This method will delete previous databse entries and
          * add new entries to database
+         *
+         * @param contactDAO: Data Access Object
          */
         suspend fun populateDatabase(contactDAO: ContactDAO) {
             contactDAO.deleteAll()
