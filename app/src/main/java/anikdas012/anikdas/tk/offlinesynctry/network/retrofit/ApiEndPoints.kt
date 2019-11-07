@@ -12,6 +12,8 @@ interface ApiEndPoints {
     /**
      * This method will return a list of contacts
      * from server
+     *
+     * @return List of {@link: anikdas012.anikdas.tk.offlinesynctry.model.ContactModel} object
      */
     @Headers("Content-Type: application/json")
     @GET("/api/offlineSync/")
@@ -20,6 +22,9 @@ interface ApiEndPoints {
     /**
      * This method will add a new contact
      * to server
+     *
+     * @param contact: {@link: anikdas012.anikdas.tk.offlinesynctry.model.ContactModel} object
+     * @return {@link: anikdas012.anikdas.tk.offlinesynctry.model.ContactModel} object
      */
     @Headers("Content-Type: application/json")
     @POST("/api/offlineSync/")
