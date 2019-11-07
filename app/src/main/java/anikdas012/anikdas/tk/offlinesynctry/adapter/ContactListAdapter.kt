@@ -27,6 +27,8 @@ class ContactListAdapter internal constructor(context: Context): RecyclerView.Ad
 
     /**
      * This method will return size of contact list
+     *
+     * @return Size of contact list
      */
     override fun getItemCount() = contacts.size
 
@@ -45,6 +47,8 @@ class ContactListAdapter internal constructor(context: Context): RecyclerView.Ad
     /**
      * This method will update contact list
      * and notify changes to adapter
+     *
+     * @param contacts: List of contact
      */
     internal fun setContacts(contacts: List<Contact>) {
         Log.d(LOG_TAG, "setContacts")
