@@ -11,7 +11,7 @@ import anikdas012.anikdas.tk.offlinesynctry.viewmodel.ContactViewModel
  */
 class SyncWorker(context: Context, params: WorkerParameters, viewMode: ContactViewModel): Worker(context, params) {
 
-    val LOG_TAG = "Sync_Worker"
+    val LOG_TAG = "OFFLINE_Sync_Worker"
 
 
     override fun doWork(): Result {
