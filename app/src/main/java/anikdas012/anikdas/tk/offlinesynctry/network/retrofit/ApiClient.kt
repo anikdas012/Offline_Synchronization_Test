@@ -19,6 +19,8 @@ class ApiClient {
         /**
          * This method will return an instance of retrofit
          * in singleton pattern
+         *
+         * @return Retrofit object
          */
         private fun getInstance(): Retrofit {
             Log.d(LOG_TAG, "getInstance")
@@ -40,6 +42,8 @@ class ApiClient {
         /**
          * This method will return Api end points
          * to connect with server
+         *
+         * @return Object of api end points
          */
         fun getApi(): ApiEndPoints {
             Log.d(LOG_TAG, "getApi")
