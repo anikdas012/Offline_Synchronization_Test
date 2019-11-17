@@ -16,6 +16,8 @@ class AppUtil {
          */
         const val STATUS_SYNCED: Int = 0
         const val STATUS_UNSYNCED: Int = 1
+        const val CHANNEL_ID: String = "Offline Worker Notification"
+        const val NOTIFICATION_ID: Int = 12
 
         /**
          * This method will return current
