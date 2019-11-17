@@ -11,8 +11,9 @@ class AppUtil {
         private val LOG_TAG = "OFFLINE_App_Util"
 
         /**
-         * Final status code of synced and unsynced
-         * contacts
+         * Final status code of synced, unsynced
+         * contacts and notification channel id
+         * and notification id.
          */
         const val STATUS_SYNCED: Int = 0
         const val STATUS_UNSYNCED: Int = 1
