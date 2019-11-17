@@ -1,8 +1,12 @@
 package anikdas012.anikdas.tk.offlinesynctry.synchronization
 
 import android.content.Context
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.work.Worker
 import androidx.work.WorkerParameters
+import anikdas012.anikdas.tk.offlinesynctry.R
+import anikdas012.anikdas.tk.offlinesynctry.util.AppUtil
 import anikdas012.anikdas.tk.offlinesynctry.viewmodel.ContactViewModel
 
 /**
@@ -16,6 +20,13 @@ class SyncWorker(context: Context, params: WorkerParameters, viewMode: ContactVi
 
     override fun doWork(): Result {
 //        Showing notification while uploading
+        val builder = NotificationCompat.Builder(applicationContext, AppUtil.CHANNEL_ID)
+            .setSmallIcon(R.drawable.not_synced)
+            .setContentTitle("Synchronization going on")
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+        NotificationManagerCompat.from(applicationContext)
+            .notify(AppUtil.NOTIFICATION_ID, builder.build())
         
     }
 }
