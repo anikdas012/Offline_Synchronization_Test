@@ -27,6 +27,7 @@ class SyncWorker(context: Context, params: WorkerParameters, viewMode: ContactVi
 
         NotificationManagerCompat.from(applicationContext)
             .notify(AppUtil.NOTIFICATION_ID, builder.build())
-        
+
+        return Result.success()
     }
 }
