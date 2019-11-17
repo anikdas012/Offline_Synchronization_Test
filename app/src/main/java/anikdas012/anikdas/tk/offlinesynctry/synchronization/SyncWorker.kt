@@ -15,6 +15,7 @@ class SyncWorker(context: Context, params: WorkerParameters, viewMode: ContactVi
 
 
     override fun doWork(): Result {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//        Showing notification while uploading
+        
     }
 }
