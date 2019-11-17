@@ -1,6 +1,9 @@
 package anikdas012.anikdas.tk.offlinesynctry.synchronization
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Context
+import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.work.Worker
@@ -20,6 +23,21 @@ class SyncWorker(context: Context, params: WorkerParameters, viewMode: ContactVi
 
     override fun doWork(): Result {
 //        Showing notification while uploading
+
+//        Creating notification channel if android version > O
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channelName = "Offline Channel"
+            val channelDescription = "Contains all notifications from Offline Synchronization"
+            val channelImportance = NotificationManager.IMPORTANCE_DEFAULT
+
+            val notificationChannel = NotificationChannel(AppUtil.CHANNEL_ID, channelName, channelImportance)
+            notificationChannel.description = channelDescription
+
+            val notificationManager = applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(notificationChannel)
+        }
+
+
         val builder = NotificationCompat.Builder(applicationContext, AppUtil.CHANNEL_ID)
             .setSmallIcon(R.drawable.not_synced)
             .setContentTitle("Synchronization going on")
