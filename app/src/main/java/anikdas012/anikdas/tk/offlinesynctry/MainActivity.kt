@@ -46,5 +46,8 @@ class MainActivity : AppCompatActivity() {
             name.setText("")
             number.setText("")
         }
+
+//        Creating work request to upload data when network is connected
+        viewModel.syncUnsyncContacts()
     }
 }
