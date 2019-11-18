@@ -4,6 +4,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
+import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.work.Worker
@@ -22,6 +23,7 @@ class SyncWorker(context: Context, params: WorkerParameters, viewMode: ContactVi
 
 
     override fun doWork(): Result {
+        Log.d(LOG_TAG, "doWork")
 //        Showing notification while uploading
 
 //        Creating notification channel if android version > O
