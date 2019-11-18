@@ -5,11 +5,12 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import androidx.work.WorkManager
+import androidx.work.*
 import anikdas012.anikdas.tk.offlinesynctry.database.Contact
 import anikdas012.anikdas.tk.offlinesynctry.database.ContactDatabase
 import anikdas012.anikdas.tk.offlinesynctry.model.ContactModel
 import anikdas012.anikdas.tk.offlinesynctry.network.retrofit.ApiClient
+import anikdas012.anikdas.tk.offlinesynctry.synchronization.SyncWorker
 import anikdas012.anikdas.tk.offlinesynctry.util.AppUtil
 import anikdas012.anikdas.tk.offlinesynctry.util.ContactRepository
 import kotlinx.coroutines.Dispatchers
@@ -17,6 +18,7 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.concurrent.TimeUnit
 
 class ContactViewModel(application: Application): AndroidViewModel(application) {
 
@@ -94,9 +96,18 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
     fun syncUnsyncContacts() {
         Log.d(LOG_TAG, "syncUnsyncContacts")
         val unSyncContacts = repository.getUnSyncedContacts()
-        for (contact in unSyncContacts) {
+        /*for (contact in unSyncContacts) {
             syncContact(contact.name, contact.number)
-        }
+        }*/
+
+        println("*********////******* line 1")
+        val constant: Constraints = Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
+        println("*********////******* line 2")
+        val periodicWorkRequest = PeriodicWorkRequest.Builder(SyncWorker::class.java, 10, TimeUnit.MINUTES, 5, TimeUnit.MINUTES).setConstraints(constant).build()
+        println("*********////******* line 3")
+        workManager.enqueueUniquePeriodicWork("Sync work", ExistingPeriodicWorkPolicy.REPLACE, periodicWorkRequest)
+        println("*********////******* line 4")
+
     }
 
 
