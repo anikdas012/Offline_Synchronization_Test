@@ -1,5 +1,6 @@
 package anikdas012.anikdas.tk.offlinesynctry.viewmodel
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
@@ -111,9 +112,9 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
                                                         .setConstraints(constant)
                                                         .build()
 
-        workManager.enqueueUniquePeriodicWork("Sync work",
-                                                                ExistingPeriodicWorkPolicy.REPLACE,
-                                                                periodicWorkRequest)
+        workManager.enqueueUniquePeriodicWork(AppUtil.BACKGROUND_TASK_NAME,
+                                                ExistingPeriodicWorkPolicy.REPLACE,
+                                                periodicWorkRequest)
 
     }
 
