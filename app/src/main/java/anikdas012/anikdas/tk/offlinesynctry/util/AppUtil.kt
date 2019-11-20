@@ -4,6 +4,12 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.util.Log
+import android.graphics.Bitmap
+import anikdas012.anikdas.tk.offlinesynctry.database.Contact
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import java.lang.reflect.Type
+
 
 class AppUtil {
     companion object {
@@ -35,6 +41,13 @@ class AppUtil {
             val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             val activeNetwork: NetworkInfo? = connectivityManager.activeNetworkInfo
             return activeNetwork?.isConnected ?: false
+        }
+
+        fun contactListToJson(contact: List<Contact>) = Gson().toJson(contact)
+
+        fun jsonToContactList(contact: String): List<Contact>{
+            val type = object :TypeToken<List<Contact>>(){}.type
+            return Gson().fromJson(contact, type)
         }
     }
 }
