@@ -17,7 +17,7 @@ import anikdas012.anikdas.tk.offlinesynctry.viewmodel.ContactViewModel
  * Created by "Anik Das" on 7/28/2019
  * Developer email: "anikdas012@gmail.com"
  */
-class SyncWorker(context: Context, params: WorkerParameters, viewMode: ContactViewModel): Worker(context, params) {
+class SyncWorker(val context: Context, params: WorkerParameters): Worker(context, params) {
 
     val LOG_TAG = "OFFLINE_Sync_Worker"
 
@@ -35,12 +35,12 @@ class SyncWorker(context: Context, params: WorkerParameters, viewMode: ContactVi
             val notificationChannel = NotificationChannel(AppUtil.CHANNEL_ID, channelName, channelImportance)
             notificationChannel.description = channelDescription
 
-            val notificationManager = applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(notificationChannel)
         }
 
 
-        val builder = NotificationCompat.Builder(applicationContext, AppUtil.CHANNEL_ID)
+        val builder = NotificationCompat.Builder(context, AppUtil.CHANNEL_ID)
             .setSmallIcon(R.drawable.notification_icon)
             .setContentTitle("Synchronization going on")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
