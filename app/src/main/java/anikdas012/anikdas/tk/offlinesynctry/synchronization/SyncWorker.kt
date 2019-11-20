@@ -25,6 +25,7 @@ class SyncWorker(val context: Context, params: WorkerParameters): Worker(context
     override fun doWork(): Result {
         Log.d(LOG_TAG, "doWork")
 //        Showing notification while uploading
+//        val unSyncContacts = inputData.get
 
 //        Creating notification channel if android version > Oreo
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
