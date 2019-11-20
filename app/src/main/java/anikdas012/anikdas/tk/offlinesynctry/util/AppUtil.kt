@@ -19,6 +19,8 @@ class AppUtil {
         const val STATUS_UNSYNCED: Int = 1
         const val CHANNEL_ID: String = "Offline Worker Notification"
         const val NOTIFICATION_ID: Int = 12
+        const val BACKGROUND_TASK_NAME = "Sync work"
+        const val BACKGROUND_TASK_DATA = "unScynedContacts"
 
         /**
          * This method will return current
