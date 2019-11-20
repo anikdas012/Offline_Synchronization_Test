@@ -101,9 +101,19 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
         }*/
 
 //        Creating work request for background sync process
-        val constant: Constraints = Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
-        val periodicWorkRequest = PeriodicWorkRequestBuilder<SyncWorker>(15, TimeUnit.MINUTES, 5, TimeUnit.MINUTES).setConstraints(constant).build()
-        workManager.enqueueUniquePeriodicWork("Sync work", ExistingPeriodicWorkPolicy.REPLACE, periodicWorkRequest)
+        val constant: Constraints = Constraints.Builder()
+                                        .setRequiredNetworkType(NetworkType.CONNECTED)
+                                        .build()
+
+        val periodicWorkRequest = PeriodicWorkRequestBuilder<SyncWorker>(
+                                                        15, TimeUnit.MINUTES,
+                                                        5, TimeUnit.MINUTES)
+                                                        .setConstraints(constant)
+                                                        .build()
+
+        workManager.enqueueUniquePeriodicWork("Sync work",
+                                                                ExistingPeriodicWorkPolicy.REPLACE,
+                                                                periodicWorkRequest)
 
     }
 
