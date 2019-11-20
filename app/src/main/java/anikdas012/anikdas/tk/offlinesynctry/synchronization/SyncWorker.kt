@@ -41,7 +41,7 @@ class SyncWorker(context: Context, params: WorkerParameters, viewMode: ContactVi
 
 
         val builder = NotificationCompat.Builder(applicationContext, AppUtil.CHANNEL_ID)
-            .setSmallIcon(R.drawable.not_synced)
+            .setSmallIcon(R.drawable.notification_icon)
             .setContentTitle("Synchronization going on")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
