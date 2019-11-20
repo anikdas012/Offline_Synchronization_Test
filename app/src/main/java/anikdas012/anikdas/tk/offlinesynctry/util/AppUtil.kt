@@ -13,7 +13,8 @@ class AppUtil {
         /**
          * Final status code of synced, unsynced
          * contacts and notification channel id
-         * and notification id.
+         * and notification id, background task
+         * name, background task data.
          */
         const val STATUS_SYNCED: Int = 0
         const val STATUS_UNSYNCED: Int = 1
