@@ -41,8 +41,22 @@ class AppUtil {
             return activeNetwork?.isConnected ?: false
         }
 
+        /**
+         * This method will convert a List<Contact>
+         * to a String object of json.
+         *
+         * @param contact: List of Contact objects
+         * @return Json object of the list
+         */
         fun contactListToJson(contact: List<Contact>) = Gson().toJson(contact)
 
+        /**
+         * This method will convert a Json
+         * to a List<Contact>.
+         *
+         * @param contact: Json object of Contacts
+         * @return List of Contact objects
+         */
         fun jsonToContactList(contact: String): List<Contact>{
             val type = object :TypeToken<List<Contact>>(){}.type
             return Gson().fromJson(contact, type)
