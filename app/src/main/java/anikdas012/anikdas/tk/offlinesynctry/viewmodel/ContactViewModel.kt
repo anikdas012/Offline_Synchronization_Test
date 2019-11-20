@@ -100,6 +100,7 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
             syncContact(contact.name, contact.number)
         }*/
 
+//        Creating work request for background sync process
         val constant: Constraints = Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
         val periodicWorkRequest = PeriodicWorkRequestBuilder<SyncWorker>(15, TimeUnit.MINUTES, 5, TimeUnit.MINUTES).setConstraints(constant).build()
         workManager.enqueueUniquePeriodicWork("Sync work", ExistingPeriodicWorkPolicy.REPLACE, periodicWorkRequest)
