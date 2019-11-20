@@ -102,6 +102,7 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
         }*/
 
 //        Creating work request for background sync process
+        val inputData: Data = Data.Builder().putString("contacts", AppUtil.contactListToJson(unSyncContacts)).build()
         val constant: Constraints = Constraints.Builder()
                                         .setRequiredNetworkType(NetworkType.CONNECTED)
                                         .build()
