@@ -100,13 +100,9 @@ class ContactViewModel(application: Application): AndroidViewModel(application) 
             syncContact(contact.name, contact.number)
         }*/
 
-        println("*********////******* line 1")
         val constant: Constraints = Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
-        println("*********////******* line 2")
         val periodicWorkRequest = PeriodicWorkRequestBuilder<SyncWorker>(15, TimeUnit.MINUTES, 5, TimeUnit.MINUTES).setConstraints(constant).build()
-        println("*********////******* line 3")
         workManager.enqueueUniquePeriodicWork("Sync work", ExistingPeriodicWorkPolicy.REPLACE, periodicWorkRequest)
-        println("*********////******* line 4")
 
     }
 
