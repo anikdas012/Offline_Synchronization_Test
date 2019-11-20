@@ -26,7 +26,7 @@ class SyncWorker(context: Context, params: WorkerParameters, viewMode: ContactVi
         Log.d(LOG_TAG, "doWork")
 //        Showing notification while uploading
 
-//        Creating notification channel if android version > O
+//        Creating notification channel if android version > Oreo
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channelName = "Offline Channel"
             val channelDescription = "Contains all notifications from Offline Synchronization"
